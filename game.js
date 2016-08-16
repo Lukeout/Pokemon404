@@ -19,7 +19,7 @@ var stage = new PIXI.Container();
 
 function randomPokemon() {
     //return "/sprites/" + (Math.floor(Math.random() * (404 - 1 + 1)) + 1) + ".png";
-    return "http://raw.githubusercontent.com/Lukeout/Pokemon404/gh-pages/25.png";
+    return "https://raw.githubusercontent.com/Lukeout/Pokemon404/gh-pages/sprites/25.png";
 }
 
 
