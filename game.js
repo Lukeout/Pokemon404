@@ -34,8 +34,8 @@ function loadPokemon() {
     pkmn.position.x = Math.floor((Math.random() * window.innerWidthwidth/1.1) + 10)
     pkmn.position.y = 300;
 
-    pkmn.scale.x = 1;
-    pkmn.scale.y = 1;
+    pkmn.scale.x = .5;
+    pkmn.scale.y = .5;
     pkmn.interactive = true;
     pkmn.on('mousedown', onButtonDown);
 
