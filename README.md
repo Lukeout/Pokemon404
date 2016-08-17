@@ -3,7 +3,7 @@ A 404 Error Page gamified - collect all 404 Pokemon falling from the sky. Standa
 
 Works Best in Chrome. 
 
-Live Page [Here](Https://Lukeout.github.io/Pokemon404)
+Live Page: [Here](Https://Lukeout.github.io/Pokemon404)
 
 ## To Do
 * Move Mute function into seperate .js file
