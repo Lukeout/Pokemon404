@@ -72,7 +72,7 @@ var intervalID = setInterval(function () {
 // Will add to each Pokemon's/Ball's X cordinate making them fall 
 function gameLoop() {
    requestAnimationFrame(gameLoop);    
-    for (var i = 0; i < 500; i++) {
+    for (var i = 0; i < 700; i++) {
         if (stage.children[i]) {
             if (stage.children[i].position.y <= window.innerHeight - 90) {
             stage.children[i].position.y = stage.children[i].position.y+1;
