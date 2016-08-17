@@ -1,0 +1,79 @@
+@font-face {
+    font-family: GB;
+    src: url('GB.ttf')
+}
+
+html {
+    background: url(grass.png) no-repeat bottom fixed; 
+    background-color: #79c9f9;
+    overflow: hidden;
+}
+
+#Wrapper {
+    width: 100%;
+    text-align: center; 
+}
+
+#Mute {
+    position: absolute;
+    display: inline-block;    
+    font-size: .75em;
+    font-family: GB;
+    margin-top: 37em;
+    text-align: center;
+    color: #254c64;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+    -moz-user-drag: none;
+    -khtml-user-drag: none;
+    -webkit-user-drag: none;
+    user-drag: none; 
+}
+
+img {
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+    -moz-user-drag: none;
+    -khtml-user-drag: none;
+    -webkit-user-drag: none;
+    user-drag: none;
+}
+
+#desc {
+    position: absolute;
+    font-size: 2.5em;
+    letter-spacing: .12em;
+    font-family: GB;
+    margin-top: 6em;
+    width: 100%;
+    text-align: center;
+    color: #254c64;
+    -webkit-user-select: none;  
+}
+
+
+#catch {
+    position: absolute;
+    font-size: 1em;
+    font-family: GB;
+    margin-top: 18.5em;
+    width: 100%;
+    text-align: center;   
+    color: #254c64;
+    -webkit-user-select: none;  
+}
+
+#score {
+    position: absolute;
+    text-align: center;
+    font-family: GB;
+    margin-top: 6.4em;
+    width: 100%;
+    color: #254c64;
+    font-size: 3.5em;
+     -webkit-user-select: none;  
+}

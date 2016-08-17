@@ -1,200 +1,94 @@
-//Create the renderer
-var renderer = PIXI.autoDetectRenderer();
-renderer.backgroundColor = 0xCCFFFF;
-
-var score = 0;
-
+//Create the renderer and Stage
+var renderer = PIXI.autoDetectRenderer(window.innerWidth, window.innerHeight, {transparent: true});
+//renderer.backgroundColor = 0xCCFFFF;
 renderer.view.style.position = "absolute";
 renderer.view.style.display = "block";
-
 renderer.autoResize = true;
-
-renderer.resize(window.innerWidth, window.innerHeight);
-
-
+//renderer.resize(window.innerWidth, window.innerHeight);
 document.body.appendChild(renderer.view);
-
 var stage = new PIXI.Container();
 
+// Global Variables for our "game"
+var score = 0;
+var x = 0;
+var counter = 0; 
 
+// Generates random Pokemon to display from Sprites
 function randomPokemon() {
+    
+    //Dev normal 
     //return "/sprites/" + (Math.floor(Math.random() * (404 - 1 + 1)) + 1) + ".png";
+
+    // Value for Github pages
     return "https://raw.githubusercontent.com/Lukeout/Pokemon404/gh-pages/sprites/" + 
     (Math.floor(Math.random() * (404 - 1 + 1)) + 1)
     + ".png";
 }
 
-
-function loadPokemon() {
-    var pkmn = null; 
-
-    PIXI.loader.add('pkmn', randomPokemon()).load(function (loader, resources) {
-    // This creates a texture from a 'bunny.png' image.
-    pkmn = new PIXI.Sprite(resources.pkmn.texture);
-
-    // Setup the position and scale of the bunny
-    pkmn.position.x = Math.floor((Math.random() * window.innerWidthwidth/1.1) + 10)
-    pkmn.position.y = 300;
-
-    pkmn.scale.x = .5;
-    pkmn.scale.y = .5;
-    pkmn.interactive = true;
-    pkmn.on('mousedown', onButtonDown);
-
-    // Add the bunny to the scene we are building.
-    stage.addChild(pkmn);
-        
-    //PIXI.loader.reset();
-
-
-    // kick off the animation loop (defined below)
-});
-}
-
-//for (var i = 0; i < 404; i++) {
-//    var i = null;
-//}
-//loadPokemon();
-// load the texture we need
-
-console.log(window.innerWidth);
-console.log(Math.random() * window.innerWidth);
-
-function draw() {
-for (var i = 0; i < 2; i++) {
-    var yo =  stage.addChild(new PIXI.Sprite.fromImage(randomPokemon()));
-    yo.x = Math.random() * window.innerWidth
-    yo.interactive = true;
-    yo.on('click', function() {
-        score += score; 
-        console.log(score);
-        yo.visible = false;
-    });
-    PIXI.loader.reset();
-}
-
-}
-
-
-function displayPokeball(x, y) {
-    //var audio = new Audio('catch.mp3');
-    //audio.play();
-    //var ball1 = stage.addChild(new PIXI.Sprite.fromImage("ball2.png"));
-    //ball1.x = x +25;
-    //ball1.y = y + 25; 
-    //stage.removeChild(ball1);
+// Event function fired when Pokemon are caught, displays a Pokeball
+function drawPokeball(x, y) {
+    var audio = new Audio('catch.mp3');
+    audio.play();
     var ball= stage.addChild(new PIXI.Sprite.fromImage("poke.png"));
     ball.x = x + 25; 
     ball.y = y + 25;
     ball.type = "ball";
-    console.log(ball.x);
-    //stage.addChild(frame1);
-    PIXI.loader.reset();
-                         
+    //console.log(ball.x);
+    PIXI.loader.reset();                     
 }
 
-var x = 0;
-var counter = 0; 
+// Draws a Pokemon using Pixi Library
 function drawPokemon() {
     var poke = stage.addChild(new PIXI.Sprite.fromImage(randomPokemon()));
-    console.log(x)
-    //var ball= stage.addChild(new PIXI.Sprite.fromImage("poke.png"));
-    poke.x = Math.random() * window.innerWidth
+    poke.x = (Math.random() * window.innerWidth/1.1) - 10;
     poke.interactive = true;
     poke.on('click', function() {
         score += 1;
+        document.getElementById("sc").innerHTML = score; 
         console.log(score);
         stage.removeChild(poke); 
-        displayPokeball(poke.x, poke.y);
+        drawPokeball(poke.x, poke.y);
     });
     poke.on('touchstart', function() {
         score += 1;
+        document.getElementById("sc").innerHTML = score; 
         console.log(score);
-        stage.removeChild(poke);
-        stage.addChild(new PIXI.Sprite.fromImage("poke.png"));
+        stage.removeChild(poke); 
+        drawPokeball(poke.x, poke.y);
     });
-    
     PIXI.loader.reset();
     counter += 1; 
+    console.log(counter);
 }
 
-
-//var timerId = setInterval(drawPokemon, 300);
-
-
-
-
+// Draw a Pokemon every .2 seconds, stop after 404 - this function fires automaticallu
 var intervalID = setInterval(function () {
-
    drawPokemon();
-   //console.log(x);
-
-   if (++x === 405) {
+   if (++x === 404) {
        window.clearInterval(intervalID);
    }
 }, 200);
 
-
-//draw();
-//setInterval(draw, 2);
-//console.log(window.innerHeight);
-
+// Will add to each Pokemon's/Ball's X cordinate making them fall 
 function gameLoop() {
-   requestAnimationFrame(gameLoop);
-    
-    //setInterval(drawPokemon, 5000);
-
-    
-    for (var i = 0; i < 200; i++) {
+   requestAnimationFrame(gameLoop);    
+    for (var i = 0; i < 500; i++) {
         if (stage.children[i]) {
-            if (stage.children[i].position.y <= window.innerHeight - 100) {
+            if (stage.children[i].position.y <= window.innerHeight - 90) {
             stage.children[i].position.y = stage.children[i].position.y+1;
             PIXI.loader.reset();
             
-            if (stage.children[i].position.y === window.innerHeight - 200) {
+            if (stage.children[i].position.y === window.innerHeight - 140) {
                 if (stage.children[i].type !== "ball")
                 stage.removeChild(stage.children[i]);
             }
             }
         }
-       // PIXI.loader.reset();
         
     }
-    //console.log(timerId);
-    //var count = 0;
-    //stage.addChild(new PIXI.Sprite.fromImage(randomPokemon()));
-    //count += 1; 
-    //console.log(count);
-
-    //if (count < 404) {
-      //  requestAnimationFrame(gameLoop);
-        //stage.addChild(new PIXI.Sprite.fromImage(randomPokemon()));
-    //}
-
-
-    
-    //var hold = stage.addChild(new PIXI.Sprite.fromImage(randomPokemon()));
-    
-    
-    //stage.children[i].position.y = stage.children[i].position.y+1;
-  
-    
-    //loadPokemon();
-    
     renderer.render(stage);
 }
 
-function onButtonDown() {
-    score = score + 1;
-    //this.destroy();
-    //stage.removeChild(child)
-    console.log(score);
-    //destroy = true;
-}
+// Begin Game
+gameLoop();
 
-function onMouseUp(child) {
-    //stage.removeChild(child);
-}
-
-requestAnimationFrame(gameLoop)
-//setInterval(gameLoop(), 1000)

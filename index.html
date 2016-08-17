@@ -1,21 +1,38 @@
 <!doctype html>
-<meta charset="utf-8">
-<title>Hello World</title>
-<style>* {padding: 0; margin: 0}</style>
+<head>
+    <meta charset="utf-8">
+    <title>Hello World</title>
+    <link rel="stylesheet" href="game.css">
+    <link rel="styleshet" href="https://fonts.googleapis.com/css?family=Roboto" ></link>
+    <style>* {padding: 0; margin: 0}</style>
+    <script src="pixi.min.js"></script>
+    <audio id="route1" loop="loop" autoplay="autoplay">
+    <source src="https://raw.githubusercontent.com/Lukeout/Pokemon404/gh-pages/route1.mp3" type="audio/mp3">
+    <script src="game.js"></script>
+    Your browser does not support the audio element.
+    </audio> 
+</head>
+
 <body>
-<script src="pixi.min.js"></script>
-<script src="game.js"></script>
+    <div id="desc" onselectstart="return false">PAGE NOT FOUND</div>
+    <div id="catch" >Click on the Pokemon to Catch 'em All</div>
+    <div id="score" ><span id="sc">0</span><img src="404.png"  user-select: none ></div>
+    <div id="Wrapper">
+        <div id="Mute" onclick="toggleSound()">MUTE</div>
+    </div>
 
-
-<script>
-//Test that Pixi is working
-console.log(PIXI);
-
-</script>
-
-<audio loop="loop" autoplay="autoplay">
-<source src="https://raw.githubusercontent.com/Lukeout/Pokemon404/gh-pages/route1.mp3" type="audio/mp3">
-Your browser does not support the audio element.
-</audio>   
-
+    <!-- Mute Function -->
+    <script type="text/javascript">
+    function toggleSound() {
+      var audioElem = document.getElementById('route1');
+      if (audioElem.paused) {
+        document.getElementById('Mute').innerHTML = "MUTE";
+        audioElem.play();
+      } 
+      else {
+          document.getElementById('Mute').innerHTML = "PLAY";
+          audioElem.pause();
+      } 
+    }
+    </script>
 </body>
