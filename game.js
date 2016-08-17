@@ -58,7 +58,7 @@ function drawPokemon() {
     });
     PIXI.loader.reset();
     counter += 1; 
-    console.log(counter);
+    //console.log(counter);
 }
 
 // Draw a Pokemon every .2 seconds, stop after 404 - this function fires automaticallu
