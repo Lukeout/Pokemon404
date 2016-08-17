@@ -1,4 +1,4 @@
-# 
+# Pokemon 404
 A 404 Error Page gamified - collect all 404 Pokemon falling from the sky. Standard front-end technologies, and canvas/WebGL rendering library [Pixi.js](https://github.com/pixijs/pixi.js).
 
 Works Best in Chrome. 
