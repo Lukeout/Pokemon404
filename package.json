@@ -1,0 +1,22 @@
+{
+  "name": "pokemon404",
+  "version": "1.0.0",
+  "description": "A 404 Error Page gamified - collect all 404 Pokemon falling from the sky. Standard front-end technologies, and canvas/WebGL rendering library [Pixi.js](https://github.com/pixijs/pixi.js).",
+  "main": "PlayFabGettingStarted.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Lukeout/Pokemon404.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Lukeout/Pokemon404/issues"
+  },
+  "homepage": "https://github.com/Lukeout/Pokemon404#readme",
+  "dependencies": {
+    "playfab-web-sdk": "^1.53.190916"
+  }
+}
