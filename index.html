@@ -11,6 +11,12 @@
     <script src="game.js"></script>
     Your browser does not support the audio element.
     </audio> 
+    <!-- Special meta tag allows you to pass Google Client ID. Replace the content attribute value with your own Client Id -->
+    <meta name="google-signin-client_id" content="1002946301887-uljp1fvo8vrhn1c9mqqek1ttvkhgqg79.apps.googleusercontent.com"><!-- // TODO: PUT YOUR GOOGLE CLIENT_ID HERE! -->
+    <!-- Load Google platform SDK-->
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <!-- Load PlayFab Client JavaScript SDK -->
+    <script src="https://download.playfab.com/PlayFabClientApi.js"></script>
 </head>
 
 <body>
@@ -18,11 +24,10 @@
     <div id="catch" >Click on the Pokemon to Catch 'em All</div>
     
     <div id="score" ><span id="sc">0</span><img src="404.png"  user-select: none ></div>
-    <a href='/google-logintest.html'>Login test</a>
     <div id="Wrapper">
         <div id="Mute" onclick="toggleSound()">MUTE</div>
     </div>
-    <div id='catch'><a href='/google-logintest.html'>Login test</a></div>
+
     
     <!-- Mute Function -->
     <script type="text/javascript">
@@ -37,5 +42,38 @@
           audioElem.pause();
       } 
     }
+    </script>
+    <p>Google Access Token Auth Example</p>
+    <!-- Neat Google button gets styled automatically when Google platform SDK is loaded -->
+    <div class="g-signin2" data-onsuccess="onSignIn"></div>
+    <script>
+        // Invoked when user has signed in with Google
+        function onSignIn() {
+            // Retrieve access token
+            var accessToken = gapi.auth2.getAuthInstance().currentUser.get().getAuthResponse(true).access_token;
+            
+            // Execute LoginWithGoogleAccount API call using the access token. Please replace TitleID with your own.
+            logLine("Attempting PlayFab Sign-in");
+            PlayFabClientSDK.LoginWithGoogleAccount({
+                AccessToken: accessToken,
+                CreateAccount : true,            
+                TitleId: "4C719", // TODO: PUT YOUR TITLE ID HERE!
+            }, onPlayFabResponse);
+        }
+
+        // Handles response from playfab.
+        function onPlayFabResponse(response, error) {
+            if (response)
+                logLine("Response: " + JSON.stringify(response));
+            if (error)
+                logLine("Error: " + JSON.stringify(error));
+        }
+
+        function logLine(message) {
+            var textnode = document.createTextNode(message);
+            document.body.appendChild(textnode);
+            var br = document.createElement("br");
+            document.body.appendChild(br);
+        }
     </script>
 </body>
