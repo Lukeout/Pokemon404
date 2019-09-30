@@ -8,7 +8,7 @@ renderer.autoResize = true;
 document.body.appendChild(renderer.view);
 var stage = new PIXI.Container();
 
-PlayFab.settings.titleId='4C719';
+PlayFab.settings.titleId = '4C719';
 
 // Global Variables for our "game"
 var score = 0;
@@ -91,6 +91,7 @@ function gameLoop() {
     }
     renderer.render(stage);
 }
+
 
 // Begin Game
 gameLoop();
