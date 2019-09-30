@@ -25,6 +25,7 @@ function randomPokemon() {
     + ".png";
 }
 
+
 // Event function fired when Pokemon are caught, displays a Pokeball
 function drawPokeball(x, y) {
     var audio = new Audio('catch.mp3');

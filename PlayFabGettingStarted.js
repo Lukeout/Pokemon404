@@ -21,3 +21,7 @@ var LoginCallback = function (result, error) {
             PlayFab.GenerateErrorReport(error);
     }
 }
+
+function sendHighSCore() {
+    PlayFabClientSDK.UpdatePlayerStatistics({"Statistics":[{ "StatisticName ": "Highscore", " Value ":18}]});
+}

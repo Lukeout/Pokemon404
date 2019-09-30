@@ -67,6 +67,18 @@ img {
     -webkit-user-select: none;  
 }
 
+#catch10 {
+    position: absolute;
+    font-size: 1em;
+    font-family: GB;
+    margin-top: 40em;
+    width: 100%;
+    text-align: center;   
+    color: #254c64;
+    -webkit-user-select: none;  
+}
+
+
 #score {
     position: absolute;
     text-align: center;

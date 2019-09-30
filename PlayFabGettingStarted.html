@@ -14,4 +14,18 @@
     Result:<br />
     <textarea id="resultOutput" cols="60" rows="5"></textarea><br />
 </body>
+
+<body>
+    <button>Update your score</button><br />
+     Response:<br />
+    <textarea id="resultOutput" cols="60" rows="5"></textarea><br />
+    <button type="button" onclick="sendHighScore()" onclick="alert('Score Sent')">Update Score</button>
+    <button type="button" onclick="alert('Score Sent')">Test</button>
+
+    <script>
+        function sendHighScore() {
+            PlayFabClientSDK.UpdatePlayerStatistics({"Statistics":[{ "StatisticName ": "Highscore", " Value ":18}]});
+        }
+    </script>
+</body>
 </html>

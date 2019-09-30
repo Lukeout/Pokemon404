@@ -20,6 +20,9 @@
 </head>
 
 <body>
+    
+  
+    </script>
     <div id="desc" onselectstart="return false">PAGE NOT FOUND</div>
     <div id="catch" >Click on the Pokemon to Catch 'em All</div>
     
@@ -27,6 +30,17 @@
     <div id="Wrapper">
         <div id="Mute" onclick="toggleSound()">MUTE</div>
     </div>
+    <br />
+    <div id="catch10" >
+        <button type="button" onclick="sendHighScore()" onclick="alert('Score Sent')">Update Score</button>
+        <button type="button" onclick="alert('Score Sent')">Test</button>
+        <script>
+            function sendHighScore() {
+                PlayFabClientSDK.UpdatePlayerStatistics({"Statistics":[{ "StatisticName ": "Highscore", " Value ":18}]});
+            }
+        </script>
+    </div>
+
 
     
     <!-- Mute Function -->
@@ -76,4 +90,7 @@
             document.body.appendChild(br);
         }
     </script>
+
+
+    
 </body>
