@@ -20,41 +20,6 @@
 </head>
 
 <body>
-  
-    <script>
-    var data = JSON.stringify({
-    "Statistics": [
-      {
-        "StatisticName": "Highscore",
-        "Value": 100
-      }
-    ]
-  });
-  
-  var xhr = new XMLHttpRequest();
-  xhr.withCredentials = true;
-  
-  xhr.addEventListener("readystatechange", function () {
-    if (this.readyState === 4) {
-      console.log(this.responseText);
-    }
-  });
-  
-  xhr.open("POST", "https://4C719.playfabapi.com/Client/UpdatePlayerStatistics?PlayFabId=B80A5B95C6C0F339");
-  xhr.setRequestHeader("X-PlayFabSDK", "PostmanCollection-0.89.190916");
-  xhr.setRequestHeader("Content-Type", "application/json");
-  xhr.setRequestHeader("X-Authorization", "B80A5B95C6C0F339-115844060912438064439-9E20A961CD108154-4C719-8D7454FC2F2CC05-KFfUjyK4WbtKlc8kS4xHmZ46/5JXpfiPzsTW7HP6yMM=");
-  xhr.setRequestHeader("cache-control", "no-cache");
-  xhr.setRequestHeader("Postman-Token", "f91ff98d-8a29-45a8-aaf6-a7164d3bf45a");
-
-  
-  //xhr.send(data);
-
-function sendScore() {
-    xhr.send(data);
-}
-    </script>
-    </script>
     <div id="desc" onselectstart="return false">PAGE NOT FOUND</div>
     <div id="catch" >Click on the Pokemon to Catch 'em All</div>
     
@@ -63,11 +28,11 @@ function sendScore() {
         <div id="Mute" onclick="toggleSound()">MUTE</div>
     </div>
     <div id="catch10" >
-        <button type="button" onclick="sendHighScore()" onclick="alert('Score Sent')">Update Score API</button>
-        <button type="button" onclick="sendScore()">Test XHL</button>
+        <button type="button" onclick="sendHighScoreDynamic()" onclick="alert('Score Sent')">Update Score</button>
+        <button type="button" onclick="resetScore()" onclick="alert('Score Sent')">Reset Score</button>
         <script>
-            function sendHighScore() {
-                PlayFabClientSDK.UpdatePlayerStatistics({"Statistics":[{ "StatisticName": "Highscore", "Value":18}]});
+            function resetScore() {
+                PlayFabClientSDK.UpdatePlayerStatistics({"Statistics":[{ "StatisticName": "Highscore", "Value":0}]});
             }
         </script>
     </div>

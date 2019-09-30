@@ -8,8 +8,6 @@ renderer.autoResize = true;
 document.body.appendChild(renderer.view);
 var stage = new PIXI.Container();
 
-PlayFab.settings.titleId = '4C719';
-
 // Global Variables for our "game"
 var score = 0;
 var x = 0;
@@ -27,6 +25,9 @@ function randomPokemon() {
     + ".png";
 }
 
+function sendHighScoreDynamic() {
+    PlayFabClientSDK.UpdatePlayerStatistics({"Statistics":[{ "StatisticName": "Highscore", "Value": score}]});
+}
 
 // Event function fired when Pokemon are caught, displays a Pokeball
 function drawPokeball(x, y) {
@@ -92,7 +93,6 @@ function gameLoop() {
     renderer.render(stage);
 }
 
-
 // Begin Game
 gameLoop();
-
+PlayFab.settings.titleId = '4C719';
